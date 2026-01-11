@@ -20,3 +20,6 @@ spring:
           keycloak:
             issuer-uri: http://localhost:9090/realms/test-realm1
             user-name-attribute: preferred_username
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:9090/realms/test-realm1

@@ -2,6 +2,7 @@ package com.example.springbootoauth2demo.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,5 +25,17 @@ public class HelloController {
         log.warn("roles: {}", roles);
 //        log.warn("roles: {}", user.getAuthorities());
         return "Welcome to Spring Boot OAuth2!" + user.toString();
+    }
+
+    @GetMapping("/user")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    public String userEndpoint() {
+        return "Hello User!";
+    }
+
+    @GetMapping("/admin")
+    @PreAuthorize("hasRole('ADMIN')")
+    public String adminEndpoint() {
+        return "Hello Admin!";
     }
 }

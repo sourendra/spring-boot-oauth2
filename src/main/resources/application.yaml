@@ -9,7 +9,7 @@ spring:
         registration:
           keycloak:
             client-id: spring-oauth2-demo
-            client-secret: secret-key
+            client-secret: secret-key  # replace the secret key
             scope:
               - openid
               - profile
